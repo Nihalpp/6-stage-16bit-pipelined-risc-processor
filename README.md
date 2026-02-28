@@ -1,47 +1,49 @@
-IITB-RISC-25
-6-Stage 16-bit Pipelined RISC Processor (Verilog RTL)
-🔹 Overview
+# IITB-RISC-25  
+## 6-Stage 16-bit Pipelined RISC Processor (Verilog RTL)
 
-Designed and implemented a fully functional 16-bit, 6-stage pipelined RISC processor in Verilog with a custom ISA (R, I, J types).
+---
 
-Pipeline Stages:
-IF → ID → RR → EX → MEM → WB
+## 🔹 Overview
 
-The additional RR stage separates decoding from register access, reducing critical path delay.
+Designed and implemented a fully functional **16-bit, 6-stage pipelined RISC processor** in Verilog with a custom ISA (R, I, J types).
 
-🔹 Key Features
+Pipeline Stages:  
+**IF → ID → RR → EX → MEM → WB**
 
-16-bit datapath
+The additional **RR stage** separates decoding from register access, reducing critical path delay.
 
-Complete pipeline implementation
+---
 
-Data Forwarding (EX/MEM & MEM/WB)
+## 🔹 Key Features
 
-Load-use hazard detection (1-cycle stall)
+- 16-bit datapath  
+- Complete 6-stage pipeline implementation  
+- Data Forwarding (EX/MEM & MEM/WB)  
+- Load-use hazard detection (1-cycle stall)  
+- 8-entry fully associative BTB  
+- 2-bit saturating branch prediction  
+- Pipeline stall and flush logic  
+- Carry & Zero flag support  
 
-8-entry fully associative BTB
+---
 
-2-bit saturating branch prediction
+## 🔹 Instruction Support
 
-Pipeline stall and flush logic
+**Arithmetic:** ADA, ADC, ADZ, AWC, ADI  
+**Logical:** NDU, NDC, NDZ  
+**Memory:** LLI, LW, SW  
+**Control:** BEQ, BLE, BLT, JAL, JLR, JRI  
 
-Carry & Zero flag support
+---
 
-🔹 Instruction Support
+## 🔹 Hazard Handling
 
-Arithmetic: ADA, ADC, ADZ, AWC, ADI
-Logical: NDU, NDC, NDZ
-Memory: LLI, LW, SW
-Control: BEQ, BLE, BLT, JAL, JLR, JRI
+- Forwarding Unit eliminates most ALU RAW hazards (zero-cycle penalty)  
+- Hazard Detection Unit inserts bubble for load-use hazards  
+- Branch predictor + flush mechanism reduces control penalties  
 
-🔹 Hazard Handling
+---
 
-Forwarding Unit eliminates most ALU RAW hazards (zero-cycle penalty)
-
-Hazard Detection Unit inserts bubble for load-use hazards
-
-Branch predictor + flush mechanism reduces control penalties
-
-🔹 Tools Used
+## 🔹 Tools Used
 
 Verilog RTL • ModelSim/Vivado Simulation • Custom Testbench
